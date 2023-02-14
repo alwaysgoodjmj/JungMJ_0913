@@ -16,38 +16,3 @@ topMenu.addEventListener('click', (event) => {
     const element = document.querySelector(link);
     element.scrollIntoView({behavior: "smooth"});
 })
-
-// skills
-const numAni = document.querySelectorAll('.per');
-const skillSection = document.querySelector('.skills');
-const triggerPoint = skillSection.offsetTop - 600;
-const timer = null;
-let excuted = false;
-
-window.addEventListener('scroll', function(){
-    const scrollAmt = this.scrollY;
-    if(scrollAmt > triggerPoint){
-        if(!excuted){
-            startNumCount();
-            excuted = true;
-        }
-    }
-});
-
-function startNumCount(){
-    function changeNum(i){
-        let num = 0;
-        const targetNum = parseInt(numAni[i].getAttribute('data-count'));
-        const timer = setInterval(function(){
-            ++num;
-            numAni[i].innerText = num;
-            if(num  == targetNum){
-                clearInterval(timer);
-            }            
-        }, 15);
-    }
-        for(let i = 0; i < numAni.length; i++){
-        changeNum(i);
-        }
-}
-
